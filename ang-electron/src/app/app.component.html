@@ -8,18 +8,16 @@
           <div class="row">
               <div class="col-md-3">
                   <label>Date of the Delivery</label>
-                  <input type="date" class="form-control"/>
+                  <input type="date" class="form-control" [value]="dateDelivery" (input)="dateDelivery = $event.target.value" required/>
               </div>
               <div class="col-md-3">
                   <label>Quantity of Product</label>
-                  <input type="number" class="form-control"/>
+                  <input type="number" class="form-control" [value]="quantityOfProduct" (input)="quantityOfProduct = $event.target.value" required/>
               </div>
               <div class="col-md-4">
                 <label>Type of Product</label>
-                <select class="form-control selectpicker">
-                    <option>Product 1</option>
-                    <option>Product 2</option>
-                    <option>Product 3</option>
+                <select class="form-control selectpicker" placeholder="Product...">
+                    <option *ngFor="let product of products">{{ product.descriptionProduct }}</option>
                 </select>                  
               </div>
           </div>
