@@ -2,22 +2,22 @@
   <h2>Create Fractioned Delivery</h2>
 
   <div class="panel-group">
-  <div class="panel panel-default">
+    <div class="panel panel-default">
       <div class="panel-heading">General Data About Delivery</div>
       <div class="panel-body">
           <div class="row">
               <div class="col-md-3">
                   <label>Date of the Delivery</label>
-                  <input type="date" class="form-control" [value]="dateDelivery" (input)="dateDelivery = $event.target.value" required/>
+                  <input type="date" class="form-control" [value]="delivery.dateDelivery" (input)="delivery.dateDelivery = $event.target.value" required/>
               </div>
               <div class="col-md-3">
                   <label>Quantity of Product</label>
-                  <input type="number" class="form-control" [value]="quantityOfProduct" (input)="quantityOfProduct = $event.target.value" required/>
+                  <input type="number" class="form-control" [value]="delivery.quantityOfProduct" (input)="delivery.quantityOfProduct = $event.target.value" required/>
               </div>
               <div class="col-md-4">
                 <label>Type of Product</label>
-                <select class="form-control selectpicker" placeholder="Product...">
-                    <option *ngFor="let product of products">{{ product.descriptionProduct }}</option>
+                <select class="form-control selectpicker" placeholder="Product..." (change)="updateProduct($event)">
+                    <option *ngFor="let product of products"  [value]="product.productType">{{ product.descriptionProduct }}</option>
                 </select>                  
               </div>
           </div>
@@ -30,7 +30,7 @@
         <div class="form-inline">
           <div class="form-group">
               <div class="input-group">
-                  <label>Search Client</label>
+                  <label>Search Client by Name</label>
                   <div class="inner-addon right-addon">
                     <input type="text" class="form-control" placeholder="Search" name="search">
                     <div class="input-group-btn">

@@ -1,4 +1,4 @@
 export class ProductDto {
-    productId: number;
+    productType: number;
     descriptionProduct: string;
 };
