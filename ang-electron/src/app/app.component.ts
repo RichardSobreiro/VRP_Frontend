@@ -8,6 +8,7 @@ import { ClientDto } from "C:/Users/Richard/Desktop/VRP_FrontEnd/ang-electron/sr
 import { ProductDto } from "C:/Users/Richard/Desktop/VRP_FrontEnd/ang-electron/src/ProductDto";
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { DeliveryDto } from '../DeliveryDto';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -17,24 +18,13 @@ import { DeliveryDto } from '../DeliveryDto';
 
 export class AppComponent{
   
-  constructor(private _electronService: ElectronService, private http:HttpClient) { 
-    this.delivery = new DeliveryDto();
-    this.http.get<ProductDto[]>("http://localhost:58949/product/products").subscribe(val => { 
-      this.products = val;
-    });
+  constructor(private _electronService: ElectronService, private router: Router) { 
 
-  }   // DI
-
-  public delivery: DeliveryDto;
-  public products: Array<ProductDto>;
-  public title = 'VRP';
-
-  updateProduct(args){
-    this.delivery.productType = args.target.value;
-    console.log("Product value: " + args.target.value);
   }
-  
-  createFractionedDelivery() {
-    
+
+  ngOnInit() {
+
   }
+
 }
+
