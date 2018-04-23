@@ -3,6 +3,7 @@ import { ClientDto } from '../../ClientDto';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { AddressDto } from '../../AddressDto';
+import { DocumentClientDto } from '../../DocumentClientDto';
 
 @Component({
   selector: 'app-client-create-edit',
@@ -12,9 +13,11 @@ import { AddressDto } from '../../AddressDto';
 export class ClientCreateEditComponent implements OnInit {
 
   public client: ClientDto = new ClientDto();
+  public documentsType: Array<DocumentClientDto> = new Array<DocumentClientDto>();
 
   constructor(private router: Router, private http:HttpClient) { 
     this.client.address = new AddressDto();
+    this.documentsType = [new DocumentClientDto(1,'CPF'), new DocumentClientDto(2, 'CNPJ')];
   }
 
   ngOnInit() {
@@ -26,6 +29,10 @@ export class ClientCreateEditComponent implements OnInit {
 
   navigateToCreateDelivery(){
     this.router.navigate(['']);  
+  }
+  
+  updateClientsDocumentType(args){
+    this.client.documentType = args.target.value;  
   }
 
   private validateClient(){
@@ -56,10 +63,10 @@ export class ClientCreateEditComponent implements OnInit {
     if(typeof this.client.address.state == 'undefined' || !this.client.address.state){
       addressOk = false;
     }
-
+    
     return clientOk && addressOk;
   }
-
+  
   private getClientServer() {
     this.http.get<ClientDto>("http://localhost:58949/client/client").subscribe(client => { 
       this.client = client;
@@ -67,7 +74,7 @@ export class ClientCreateEditComponent implements OnInit {
   }
 
   private createClientServer() {
-    if(this.validateClient()){
+    if(true){
       this.http.post("http://localhost:58949/client/client", this.client).subscribe(val =>{
         console.log('navigateToCreateDelivery');
         this.router.navigate(['']);

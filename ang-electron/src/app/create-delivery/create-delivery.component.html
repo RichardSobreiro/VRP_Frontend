@@ -5,6 +5,55 @@
     <div class="panel panel-default">
       <div class="panel-heading">Client</div>
       <div class="panel-body">
+        <div class="row" *ngIf="!clientValid">
+          <div class="col-md-12">
+              <a mat-raised-button class="float-left" style="cursor: pointer;" (click)="searchClient($event)" >Search Client by Name...</a>
+          </div>
+        </div>
+        <div class="row" *ngIf="clientValid">
+          <div class="col-md-4">
+            <label>Name</label>
+            <input type="text" class="form-control" placeholder="Client's name" [value]="client.name" (input)="client.name = $event.target.value" required/>
+          </div>
+          <div class="col-md-3">
+            <label>Document Type</label>
+            <select class="form-control selectpicker" placeholder="Document Type" (change)="updateClientsDocumentType($event)">
+              <option></option>
+              <option *ngFor="let documentType of documentsType" [value]="documentType.documentTypeId">{{ documentType.documentTypeDescription }}</option>
+            </select>
+          </div>
+          <div class="col-md-3">
+            <label>Document Number</label>
+            <input type="number" class="form-control" [value]="client.documentNumber" (input)="client.documentNumber = $event.target.value"/>
+          </div>
+        </div>
+        <div class="row" *ngIf="clientValid">
+            <div class="col-md-3">
+              <label>Street</label>
+              <input type="text" class="form-control" [value]="client.address.street" (input)="client.address.street = $event.target.value" />
+            </div>
+            <div class="col-md-2">
+              <label>Number</label>
+              <input type="number" class="form-control" [value]="client.address.number" (input)="client.address.number = $event.target.value" />
+            </div>
+            <div class="col-md-3">
+              <label>Neighborhood</label>
+              <input type="text" class="form-control" [value]="client.address.neighborhood" (input)="client.address.neighborhood = $event.target.value" />
+            </div>
+          </div>
+          <div class="row" *ngIf="clientValid">
+            <div class="col-md-3">
+              <label>City</label>
+              <input type="text" class="form-control" [value]="client.address.city" (input)="client.address.city = $event.target.value" />
+            </div>
+            <div class="col-md-2">
+              <label>State</label>
+              <input type="text" class="form-control" [value]="client.address.state" (input)="client.address.state = $event.target.value"/>
+            </div>
+          </div>
+      </div>
+    </div>
+    <div class="panel panel-default">
       <div class="panel-heading">General Data About Delivery</div>
       <div class="panel-body">
         <div class="row">
@@ -14,21 +63,16 @@
             </div>
             <div class="col-md-3">
                 <label>Quantity of Product</label>
-                <input type="number" class="form-control" [value]="delivery.quantityOfProduct" (input)="delivery.quantityOfProduct = $event.target.value" required/>
+                <input type="number" class="form-control" [value]="delivery.quantityProduct" (input)="delivery.quantityProduct = $event.target.value" required/>
             </div>
             <div class="col-md-4">
               <label>Type of Product</label>
               <select class="form-control selectpicker" placeholder="Product..." (change)="updateProduct($event)">
-                  <option *ngFor="let product of products"  [value]="product.productType">{{ product.descriptionProduct }}</option>
+                <option></option>
+                <option *ngFor="let product of products"  [value]="product.productType">{{ product.descriptionProduct }}</option>
               </select>                  
             </div>
         </div>
-        <div class="row">
-          <div class="col-md-12">
-            <a class="float-left" routerLink="/client" >Create Client</a>
-          </div>
-        </div>
       </div>
     </div>
-  </div>
 </div>

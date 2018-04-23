@@ -1,0 +1,45 @@
+<h1 mat-dialog-title>Search Client By Name</h1>
+<div mat-dialog-content>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search client by name..." 
+          [value]="clientName" (input)="clientName = $event.target.value">
+        <div class="input-group-btn">
+          <button class="btn btn-default" (click)="getClientsByName($event)"></button>
+          <i class="glyphicon glyphicon-search"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Client's Name</th>
+            <th>Client's Address</th>
+          </tr>
+        </thead>
+        <tbody >
+          <tr *ngFor="let client of clients">
+            <td><input type="checkbox" name="clientSelected" ng-model="subscription.checked" (change)="selectClient($event, client.clientId)" /></td>
+            <td>{{client.name}}</td>
+            <td>{{client.address.formattedAddress}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div md-dialog-actions>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="btn-toolbar">
+        <button class="btn btn-default" (click)="onNoClick()">Cancel</button>
+        <button class="btn btn-primary" (click)="onNoClick()">Choose Client</button>
+      </div>
+    </div>
+  </div>
+</div>

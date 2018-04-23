@@ -3,8 +3,8 @@ import { AddressDto } from "./AddressDto";
 export class ClientDto {
     clientId: number;
     dateCreation: Date;
-    name: string;
+    name: string = "";
     documentNumber: number;
-    documentType: string;
+    documentType: string = "";
     address: AddressDto;
 };

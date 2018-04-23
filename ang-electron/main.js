@@ -1,11 +1,16 @@
-const {app, BrowserWindow} = require('electron')
-const path = require('path')
-const url = require('url')
+// const electron = require.resolve('electron')
+// const BrowserWindow = electron.BrowserWindow
+// const app = electron.app
+const {app, BrowserWindow} = require('electron');
+const path = require('path');
+const url = require('url');
 
 let win
 
 function createWindow () {
-  win = new BrowserWindow({width: 800, height: 600})
+  win = new BrowserWindow()
+
+  win.maximize()
 
   // load the dist folder from Angular
   win.loadURL(url.format({
@@ -21,6 +26,7 @@ function createWindow () {
     win = null
   })
 }
+
 
 app.on('ready', createWindow)
 

@@ -1,10 +1,12 @@
 export class AddressDto {
     addressId: number;
-    street: string;
+    street: string = "";
     number: number;
-    neighborhood: string;
-    city: string;
-    state: string;
-    productProviderId: string;
-    clientId: string;
+    neighborhood: string = "";
+    city: string = "";
+    state: string = "";
+    productProviderId: string = "";
+    clientId: string = "";
+    depotId: number;
+    formattedAddress: string;
 };
