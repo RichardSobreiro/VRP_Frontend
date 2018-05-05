@@ -2,24 +2,54 @@
 <h1>Deliveries</h1>
 <br>
 <div class="form-group row">
-  <div class="col-xs-3">
-    <label>Desired Date</label>
-    <input type="date" class="form-control" >
+  <div class="col-xs-2">
+    <label>Desired Date Initial</label>
+    <input type="date" class="form-control" [value]="deliveriesFilter.desiredDateInitial | date:'yyyy-MM-dd'" 
+      (input)="deliveriesFilter.desiredDateInitial = $event.target.value" >
+  </div>
+  <div class="col-xs-2">
+    <label>Desired Date Final</label>
+    <input type="date" class="form-control" [value]="deliveriesFilter.desiredDateFinal | date:'yyyy-MM-dd'" 
+      (input)="deliveriesFilter.desiredDateFinal = $event.target.value" >
   </div>
   <div class="col-xs-3">
     <label>Client Name</label>
-    <input type="text" class="form-control" >
+    <input type="text" class="form-control" [value]="deliveriesFilter.clientName" 
+      (input)="deliveriesFilter.clientName = $event.target.value" >
   </div>
-  <div class="col-xs-3">
+  <div class="col-xs-2">
     <label>Product Type</label>
-    <select>
+    <select class="form-control selectpicker" placeholder="Products..." (change)="updateProduct($event)">
       <option></option>
+      <option *ngFor="let product of products" [value]="product.productType">{{product.descriptionProduct}}</option>
     </select>
   </div>
   <div class="col-xs-3">
+    <div class="btn-toolbar">
+      <button class="btn btn-default" (click)="getDeliveriesByFilter($event)">Filter</button>
+      <button class="btn btn-success" [disabled]="!thereIsDeliveriesSelected()" (click)="scheduleDeliveries($event)">
+        Schedule
+      </button>
+      <button class="btn btn-primary" (click)="navigateToCreateDelivery($event)">New</button>
+    </div>
+  </div>
+</div>
+<div class="form-group row">
+  <div class="col-xs-2">
+    <label>Qt. Product Initial</label>
+    <input type="number" class="form-control" [value]="deliveriesFilter.quantityProductInitial" 
+      (input)="deliveriesFilter.quantityProductInitial = $event.target.value">
+  </div>
+  <div class="col-xs-2">
+    <label>Qt. Product Final</label>
+    <input type="number" class="form-control" [value]="deliveriesFilter.quantityProductFinal" 
+      (input)="deliveriesFilter.quantityProductFinal = $event.target.value">
+  </div>
+  <div class="col-xs-2">
     <label>Status</label>
-    <select>
+    <select class="form-control selectpicker" placeholder="Status..." (change)="updateStatus($event)">
       <option></option>
+      <option *ngFor="let status of statusList" [value]="status.valueStatus">{{status.descriptionStatus}}</option>
     </select>
   </div>
 </div>
@@ -28,24 +58,27 @@
     <table class="table table-bordered">
       <thead>
         <tr>
-          <th>N°</th>
+          <th></th>
+          <th>Delivery</th>
           <th>Desired Date</th>
           <th>Cliente Name</th>
           <th>Product Type</th>
           <th>Quantity of Product</th>
-          <th>Type Delivery</th>
           <th>Status</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+        <tr *ngFor="let delivery of deliveries">
+          <td>
+            <input type="checkbox" name="deliverySelected" [value]="delivery.selected" 
+              (change)="updateSelectedDeliveries($event, delivery)">
+          </td>
+          <td>{{delivery.deliveryId}}</td>
+          <td>{{delivery.dateDelivery}}</td>
+          <td>{{delivery.client.name}}</td>
+          <td>{{delivery.product.descriptionProduct}}</td>
+          <td>{{delivery.quantityProduct}}</td>
+          <td>{{delivery.statusDelivery.descriptionStatus}}</td>
         </tr>
       </tbody>
     </table>

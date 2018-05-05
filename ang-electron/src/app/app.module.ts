@@ -83,7 +83,7 @@ import { RoutesTripsListComponent } from './routes-trips-list/routes-trips-list.
     MatTableModule,
     MatTabsModule,
     MatToolbarModule,
-    MatTooltipModule,
+    MatTooltipModule
   ],
   declarations: [
     AppComponent,

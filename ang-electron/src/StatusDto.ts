@@ -1,4 +1,4 @@
 export class StatusDto {
-    value: number;
-    description: string;
+    valueStatus: number;
+    descriptionStatus: string;
 }

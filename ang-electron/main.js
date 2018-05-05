@@ -4,6 +4,8 @@
 const {app, BrowserWindow} = require('electron');
 const path = require('path');
 const url = require('url');
+// Enable live reload for all the files inside your project directory
+//require('electron-reload')(__dirname);
 
 let win
 

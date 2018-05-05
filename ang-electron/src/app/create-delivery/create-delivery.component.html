@@ -7,7 +7,12 @@
       <div class="panel-body">
         <div class="row" *ngIf="!clientValid">
           <div class="col-md-12">
-              <a mat-raised-button class="float-left" style="cursor: pointer;" (click)="searchClient($event)" >Search Client by Name...</a>
+            <button class="btn btn-default pull-left" (click)="navigateToDeliveryList($event)">
+              <span class="glyphicon glyphicon-arrow-left">&nbsp;Deliveries List</span>
+            </button>
+            <button class="btn btn-default pull-right" (click)="searchClient($event)">
+              <span class="glyphicon glyphicon-search">&nbsp;Search Client</span>
+            </button>
           </div>
         </div>
         <div class="row" *ngIf="clientValid">
@@ -65,12 +70,16 @@
                 <label>Quantity of Product</label>
                 <input type="number" class="form-control" [value]="delivery.quantityProduct" (input)="delivery.quantityProduct = $event.target.value" required/>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
               <label>Type of Product</label>
               <select class="form-control selectpicker" placeholder="Product..." (change)="updateProduct($event)">
                 <option></option>
                 <option *ngFor="let product of products"  [value]="product.productType">{{ product.descriptionProduct }}</option>
               </select>                  
+            </div>
+            <div class="col-md-3 btn-toolbar">
+              <button class="btn btn-default padding-top-md" (click)="navigateToDeliveryList($event)">Cancel</button>
+              <button class="btn btn-primary padding-top-md" (click)="createFractionedDelivery($event)">Create</button>
             </div>
         </div>
       </div>

@@ -42,6 +42,8 @@ export class CreateDeliveryComponent implements OnInit {
 
   navigateToCreateClient(args) { this.router.navigate(['client']); }
 
+  navigateToDeliveryList(args) { this.router.navigate(['']); }
+
   updateProduct(args) { this.delivery.productType = args.target.value; }
 
   getProducts() {
@@ -65,6 +67,7 @@ export class CreateDeliveryComponent implements OnInit {
   getClientById() {
     this.http.get<ClientDto>("http://localhost:58949/client/" + this.client.clientId).subscribe(client => {
       this.client = client;
+      this.delivery.clientId = client.clientId;
       this.clientValid = true;
     });
   }

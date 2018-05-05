@@ -6,8 +6,9 @@
         <input type="text" class="form-control" placeholder="Search client by name..." 
           [value]="clientName" (input)="clientName = $event.target.value">
         <div class="input-group-btn">
-          <button class="btn btn-default" (click)="getClientsByName($event)"></button>
-          <i class="glyphicon glyphicon-search"></i>
+          <button class="btn btn-default" (click)="getClientsByName($event)">
+            <span class="glyphicon glyphicon-search"></span>
+          </button>
         </div>
       </div>
     </div>
@@ -38,6 +39,7 @@
     <div class="col-md-12">
       <div class="btn-toolbar">
         <button class="btn btn-default" (click)="onNoClick()">Cancel</button>
+        <button class="btn btn-success" (click)="navigateToCreateClient($event)">New Client</button>
         <button class="btn btn-primary" (click)="onNoClick()">Choose Client</button>
       </div>
     </div>
