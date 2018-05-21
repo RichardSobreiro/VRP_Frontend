@@ -23,7 +23,7 @@
             <th>Client's Address</th>
           </tr>
         </thead>
-        <tbody >
+        <tbody class="inner">
           <tr *ngFor="let client of clients">
             <td><input type="checkbox" name="clientSelected" ng-model="subscription.checked" (change)="selectClient($event, client.clientId)" /></td>
             <td>{{client.name}}</td>

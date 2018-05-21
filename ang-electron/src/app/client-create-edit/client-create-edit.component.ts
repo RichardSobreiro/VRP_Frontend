@@ -75,9 +75,8 @@ export class ClientCreateEditComponent implements OnInit {
 
   private createClientServer() {
     if(true){
-      this.http.post("http://localhost:58949/client/client", this.client).subscribe(val =>{
-        console.log('navigateToCreateDelivery');
-        this.router.navigate(['']);
+      this.http.post("http://localhost:58949/client/client", this.client).subscribe(val => {
+        this.router.navigate(['createdelivery']);
       });
     }
   }

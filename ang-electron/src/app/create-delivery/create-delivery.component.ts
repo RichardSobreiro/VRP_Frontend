@@ -42,7 +42,7 @@ export class CreateDeliveryComponent implements OnInit {
 
   navigateToCreateClient(args) { this.router.navigate(['client']); }
 
-  navigateToDeliveryList(args) { this.router.navigate(['']); }
+  navigateToDeliveryList(args) { this.router.navigate(['deliveries']); }
 
   updateProduct(args) { this.delivery.productType = args.target.value; }
 
@@ -60,7 +60,7 @@ export class CreateDeliveryComponent implements OnInit {
   
   createFractionedDelivery() {
     this.http.post("http://localhost:58949/fractioneddelivery", this.delivery).subscribe(val => {
-      this.router.navigate(['']);
+      this.router.navigate(['deliveries']);
     });  
   }
 

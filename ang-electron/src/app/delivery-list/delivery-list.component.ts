@@ -31,13 +31,22 @@ export class DeliveryListComponent implements OnInit {
 
   navigateToCreateDelivery(args) { this.router.navigate(['createdelivery']); }
 
-  public getDeliveriesByFilter() {
+  navigateToVehicleRoutes(args){ this.router.navigate(['']); }
+
+  selectAllDeliveriesListed($event){
+    var that = this;
+    this.deliveries.forEach(function(delivery){
+      that.updateSelectedDeliveries($event, delivery);
+    });
+  }
+
+  getDeliveriesByFilter() {
     this.http.get<DeliveryDto[]>("http://localhost:58949/delivery/deliveries", {
       params: {
         desiredDateInitial: this.deliveriesFilter.desiredDateInitial != null ? 
-          new Date(this.deliveriesFilter.desiredDateInitial).toUTCString() : new Date().toUTCString(),
+          this.deliveriesFilter.desiredDateInitial.toString() + " 00:00:00" : new Date().toString(),
         desiredDateFinal: this.deliveriesFilter.desiredDateFinal != null ? 
-          new Date(this.deliveriesFilter.desiredDateFinal).toUTCString() : new Date().toUTCString(),
+          this.deliveriesFilter.desiredDateFinal.toString() + " 00:00:00" : new Date().toString(),
         clientName: this.deliveriesFilter.clientName,
         productType: this.deliveriesFilter.productType ? this.deliveriesFilter.productType.toString() : null,
         valueStatus: this.deliveriesFilter.valueStatus ? this.deliveriesFilter.valueStatus.toString() : null,
@@ -47,7 +56,7 @@ export class DeliveryListComponent implements OnInit {
           this.deliveriesFilter.quantityProductFinal.toString() : null
       }
     }).subscribe( deliveries => {
-      this.deliveriesSelected.splice(this.deliveriesSelected.length);
+      this.deliveriesSelected.splice(0, this.deliveriesSelected.length);
       this.deliveries = deliveries;
     });  
   } 
@@ -71,9 +80,9 @@ export class DeliveryListComponent implements OnInit {
   }
 
   scheduleDeliveries() {
-    this.http.post("http://localhost:58949/scheduledfractioneddelivery", this.deliveriesSelected).
+    this.http.post("http://localhost:58949/vehicleroute/scheduledfractioneddelivery", this.deliveriesSelected).
     subscribe(value => {
-      console.log(value);
+      this.navigateToVehicleRoutes(value);
     });
   };
 

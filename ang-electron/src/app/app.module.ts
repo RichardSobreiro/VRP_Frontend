@@ -48,6 +48,7 @@ import { CreateDeliveryComponent } from './create-delivery/create-delivery.compo
 import { SearchClientModalComponent } from './search-client-modal/search-client-modal.component';
 import { DeliveryListComponent } from './delivery-list/delivery-list.component';
 import { RoutesTripsListComponent } from './routes-trips-list/routes-trips-list.component';
+import { RouteMapModalComponent } from './route-map-modal/route-map-modal.component';
 
 @NgModule({
   exports: [
@@ -91,7 +92,8 @@ import { RoutesTripsListComponent } from './routes-trips-list/routes-trips-list.
     CreateDeliveryComponent,
     SearchClientModalComponent,
     DeliveryListComponent,
-    RoutesTripsListComponent
+    RoutesTripsListComponent,
+    RouteMapModalComponent
   ],
   imports: [
     BrowserModule,
@@ -101,7 +103,7 @@ import { RoutesTripsListComponent } from './routes-trips-list/routes-trips-list.
     BrowserAnimationsModule,
     MatNativeDateModule
   ],
-  entryComponents: [SearchClientModalComponent],
+  entryComponents: [SearchClientModalComponent, RouteMapModalComponent],
   providers: [appRoutingProviders],
   bootstrap: [AppComponent]
 })

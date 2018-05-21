@@ -9,4 +9,6 @@ export class AddressDto {
     clientId: string = "";
     depotId: number;
     formattedAddress: string;
+    latitude: number;
+    longitude: number;
 };

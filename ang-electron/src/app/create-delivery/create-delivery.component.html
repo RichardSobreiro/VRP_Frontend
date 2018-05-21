@@ -77,7 +77,7 @@
                 <option *ngFor="let product of products"  [value]="product.productType">{{ product.descriptionProduct }}</option>
               </select>                  
             </div>
-            <div class="col-md-3 btn-toolbar">
+            <div class="col-md-3 btn-toolbar" style="padding-top:24px;">
               <button class="btn btn-default padding-top-md" (click)="navigateToDeliveryList($event)">Cancel</button>
               <button class="btn btn-primary padding-top-md" (click)="createFractionedDelivery($event)">Create</button>
             </div>
