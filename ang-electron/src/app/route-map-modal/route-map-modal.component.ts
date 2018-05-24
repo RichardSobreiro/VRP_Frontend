@@ -135,7 +135,7 @@ export class RouteMapModalComponent implements OnInit {
 
     function getClientMarker(){
       var image = {
-        url: 'C:/Users/Richard/Desktop/VRP_FrontEnd/ang-electron/src/app/route-map-modal/markers/markers.png',
+        url: 'C:/Users/Richard Sobreiro/Desktop/PFCCodigos/FrontEnd/VRP_Frontend/ang-electron/src/app/route-map-modal/markers/markers.png',
         // This marker is 20 pixels wide by 32 pixels high.
         size: new google.maps.Size(32, 32),
         // The origin for this image is (0, 0).

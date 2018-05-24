@@ -1,5 +1,5 @@
-import { AddressDto } from "C:/Users/Richard/Desktop/VRP_FrontEnd/ang-electron/src/AddressDto"
-import { DeliveryTruckTripDto } from "C:/Users/Richard/Desktop/VRP_FrontEnd/ang-electron/src/DeliveryTruckTripDto"
+import { AddressDto } from "./AddressDto"
+import { DeliveryTruckTripDto } from "./DeliveryTruckTripDto"
 import { StatusDto } from "./StatusDto";
 import { ProductDto } from "./ProductDto";
 import { ClientDto } from "./ClientDto";

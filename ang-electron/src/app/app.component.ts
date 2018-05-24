@@ -3,9 +3,9 @@ import { ElectronService } from 'ngx-electron';
 import { HttpClient } from '@angular/common/http';
 import {Observable} from "rxjs/Observable"; 
 
-import { AddressDto } from "C:/Users/Richard/Desktop/VRP_FrontEnd/ang-electron/src/AddressDto"
-import { ClientDto } from "C:/Users/Richard/Desktop/VRP_FrontEnd/ang-electron/src/ClientDto";
-import { ProductDto } from "C:/Users/Richard/Desktop/VRP_FrontEnd/ang-electron/src/ProductDto";
+import { AddressDto } from "../AddressDto"
+import { ClientDto } from "../ClientDto";
+import { ProductDto } from "../ProductDto";
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { DeliveryDto } from '../DeliveryDto';
 import { Router } from '@angular/router';
